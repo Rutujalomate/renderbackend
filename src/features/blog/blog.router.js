@@ -63,7 +63,7 @@ res.send(blogs)
 }
 })
 
-app.post("/blogpost",async(req,res)=>{
+app.post("/",async(req,res)=>{
    const token=req.headers["token"]
 
     try{
