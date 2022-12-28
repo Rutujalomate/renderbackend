@@ -101,32 +101,32 @@ app.post("/login",async(req,res)=>{
 
 
 
-// app.use((req,res,next)=>{
-//     const token=req.headers.token
-//     //const{email,password}=req.body
-//       ///console.log("email",email,password)
-//       if(!token){
-//         res.send("missung token")
-//       }
-//       //const verification=jwt.verify(token,"Secreate123")
+app.use((req,res,next)=>{
+    const token=req.headers.token
+    //const{email,password}=req.body
+      ///console.log("email",email,password)
+      if(!token){
+        res.send("missung token")
+      }
+      //const verification=jwt.verify(token,"Secreate123")
 
-//       try{
-//         const verification=jwt.verify(token,"Secreate123")
-// console.log(verification);
-//         if(verification.exp>new Date().getTime()){
-//            // let user=await User.findById({"_id":id})
+      try{
+        const verification=jwt.verify(token,"Secreate123")
+console.log(verification);
+        if(verification.exp>new Date().getTime()){
+           // let user=await User.findById({"_id":id})
 
-//             res.send('token is expired')
+            res.send('token is expired')
 
-//         }
-//         if(blacklist.includes(token)){
-//             return res.send('token already used')
-//                }
-//                next()
+        }
+        if(blacklist.includes(token)){
+            return res.send('token already used')
+               }
+               next()
 
-//   }catch(e){
-//       res.send(e.message)
-//   }
+  }catch(e){
+      res.send(e.message)
+  }
   
   })
   //app.use(authMiddleware)
