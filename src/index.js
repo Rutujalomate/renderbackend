@@ -1,7 +1,7 @@
 
-//require("dotenv").config();
-///const PORT=process.env.PORT
-//console.log(PORT)
+require("dotenv").config();
+const PORT=process.env.PORT
+console.log(PORT)
 const mongoose=require("mongoose")
 const express=require("express")
 const cors=require("cors")
@@ -18,16 +18,16 @@ app.use(cors())
 
 const userRoute=require("./features/user/user.router")
 
-//const productRoute=require("./features/product/product.router")
+const productRoute=require("./features/product/product.router")
 
-const cartRoute=require("./features/blog/blog.router")
+const cartRoute=require("./features/cart/cart.router")
 
 app.use("/users",userRoute)
-//app.use("/products",productRoute)
-app.use("/blogs",cartRoute)
+app.use("/products",productRoute)
+app.use("/carts",cartRoute)
 
 
-app.listen(8080,async()=>{
+app.listen(PORT,async()=>{
     try{
        await main()
    
@@ -35,7 +35,7 @@ app.listen(8080,async()=>{
    console.log(e.message)
     }
    
-       console.log(`port running on http://localhost:8080`)
+       console.log(`port running on http://localhost:${PORT}`)
    })
 
    // mongoimport --drop --db masaizon --collection users --file ./users.json --jsonArray
