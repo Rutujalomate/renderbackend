@@ -12,7 +12,7 @@ const jwt=require("jsonwebtoken")
 const blacklist=[]
 
 
-app.post("/signup",async(req,res)=>{
+app.post("/",async(req,res)=>{
     const {name,email,password,age}=req.body
 const token=req.headers["token"]
     try{
